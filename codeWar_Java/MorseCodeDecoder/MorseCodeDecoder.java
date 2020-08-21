@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MorseCodeDecoder extends MorseCode {
     public static String decode(String morseCode) {
         // your brilliant code here, remember that you can access the preloaded Morse code table through MorseCode.get(code)
@@ -19,8 +21,17 @@ public class MorseCodeDecoder extends MorseCode {
     }
 
     public static void main(String[] args){
-        String input = ".... . -.--   .--- ..- -.. .";
-        System.out.println(input);
-        System.out.println(MorseCodeDecoder.decode(input));
+        String encoded;
+        Scanner input = new Scanner(System.in);
+        while ((encoded = input.nextLine()) != "") {
+            if (encoded.equals("")) {
+                System.out.println("Exit ...");
+                input.close();
+                System.exit(0);
+            }
+            System.out.println("Encoded: " + encoded);
+            System.out.println("Decoded: " + MorseCodeDecoder.decode(encoded));
+        }
+
     }
 }

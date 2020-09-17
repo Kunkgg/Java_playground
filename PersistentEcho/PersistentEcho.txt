@@ -1,3 +1,6 @@
 #---No Comment---
 #Wed Sep 02 10:27:56 CST 2020
 name=gk07
+dbms=mysql
+host=127.0.0.1
+port=13306

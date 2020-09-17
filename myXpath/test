@@ -1,0 +1,95 @@
+html.length()
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import java.nio.file.Path;
+import java.nio.file.Files;
+String fn = "/home/gk07/Java_playground/Myjsoup/water.html";
+String html = Files.readString(Path.of(fn));
+html.length()
+Document doc = Jsoup.parse(html);
+Element content = doc.head();
+content
+content = doc.getElementById("content");
+Elements links = doc.getElementsByTag("a");
+links
+for (Element link : links) { System.out.println(link.text()); }
+Elements dictionaries = doc.select("div.dictionaries");
+dictionaries
+dict
+dict.toString()
+Elements title = dict.select("div.title_container");
+title
+String frequency_description = title.select("span.word-frequency-img").attr("title");
+frequency_description
+String frequency_band = title.select("span.word-frequency-img").attr("data-band");
+String spell = dict.select("h2.h2_entry span.orth").text();
+Elements formsEle = dict.select("span.form span.orth");
+formsEle.text()
+import java.util.ArrayList;
+ArrayList<String> forms = new ArrayList<>();
+for(Element formEle : formsEle) { forms.add(formEle.text()); }
+forms
+pron.soundmark = dict.select("div.mini_h2 span.pron").text()
+pron.soundmark
+class Pronounce {
+    public String soundmark;
+    public String sound;
+}
+Pronounce pron = new Pronounce();
+pron.soundmark = dict.select("div.mini_h2 span.pron").text()
+pron.sound = dict.select("div.mini_h2 a.hwd_sound.audio_play_button").attr("data-src-mp3")
+SenseEntry senseEntry = new SenseEntry();
+entrys
+entrys.first()
+entrys.first()
+Element firtEntry = entrys.first();
+firtEntry
+senseEntry.wordClass = firtEntry.select("span.gramGrp").text()
+senseEntry.sense = firtEntry.select("div.def").text()
+for (Element example : firtEntry.select("div.type-example")) {senseEntry.examples.add(example.text());}
+firtEntry.select("div.type-example")
+senseEntry.examples
+senseEntry.examples = new ArrayList<String>();
+for (Element example : firtEntry.select("div.type-example")) {senseEntry.examples.add(example.text());}
+senseEntry
+senseEntry.examples
+senseEntry.examples.toString()
+        Elements dict0 = doc.select("div.dictionary.Cob_adv_US.dictentry");
+entrys
+entrys.select("img.nice")
+entrys.select("img.nice").text()
+class SenseEntry {
+    public String wordClass;
+    public String sense;
+    public ArrayList<String> examples;
+}
+doc
+        Elements dict = doc.select("div.dictionary.Cob_adv_US.dictentry");
+        Elements entrys = dict.select("div.hom");
+entrys.size()
+        ArrayList<SenseEntry> senseEntrylist = new ArrayList<>();
+        for (Element entry : entrys) {
+            SenseEntry senseEntry = new SenseEntry();
+            senseEntry.wordClass = entry.select("span.gramGrp").text();
+            senseEntry.sense = entry.select("div.def").text();
+            senseEntry.examples = new ArrayList<String>();
+            for (Element example : entry.select("div.type-example")) {
+                senseEntry.examples.add(example.text());
+            }
+
+            senseEntrylist.add(senseEntry);
+        }
+senseEntrylist.size()
+senseEntrylist
+senseEntrylist.get(1)
+senseEntrylist.get(0).toString()
+senseEntrylist.get(0).examples
+senseEntrylist.get(1).examples
+senseEntrylist.get(2).examples
+senseEntrylist.get(3).examples
+senseEntrylist.get(4).examples
+senseEntrylist.get(5).examples
+for(SenseEntry e : senseEntrylist) { System.out.println(e.wordClass); System.out.println(e.sense); System.out.println(e.examples);}
+for(SenseEntry e : senseEntrylist) { System.out.println(e.wordClass); System.out.println(e.sense); System.out.println(e.examples); System.out.println();}
